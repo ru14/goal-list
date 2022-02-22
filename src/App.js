@@ -1,11 +1,14 @@
 import React from 'react';
+import TodoForm from './components/Todo/TodoForm.js';
 
-import './App.css';
+
+
 
 function App() {
   return (
     <div className="Goal ToDo App">
-      <h1>ToDo List App</h1>
+    <TodoForm/>
+      
       </div>
   );
 }
