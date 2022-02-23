@@ -20,7 +20,7 @@ const TodoForm = (props) => {
           <label>Course Goal</label>
           <input type="text" onChange={goalInputChangeHandler} />
         </div>
-        <Button type="submit">Add Goal</Button>
+        <Button type="submit">Add Todos</Button>
       </form>
     );
   };
