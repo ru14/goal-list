@@ -18,6 +18,25 @@ function App() {
       return updatedGoals;
     });
   };
+  const completeHandler = goalId =>{
+    setInput (prevGoals =>{
+      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
+      return updatedGoals;
+    });
+  };
+  const deleteItemHandler = goalId => {
+    setInput(prevGoals => {
+      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
+      return updatedGoals;
+    });
+  };
+  const editItemHandler = goalId => {
+    setInput(prevGoals => {
+      const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
+      return updatedGoals;
+    });
+  };
+
   return (
     <div>
       <section id='goal-form'>
@@ -25,7 +44,11 @@ function App() {
       </section>
       <section id='goals'>
         <TodoList
-        items = {input}/>
+        items = {input}
+        onCompleteGoal = {completeHandler}
+        onDeleteItem = {deleteItemHandler}
+        onEditItem = {editItemHandler}
+        />
       </section>
     </div>
   );
