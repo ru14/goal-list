@@ -35,9 +35,7 @@ const TodoList = (props) => {
           </div>
           <div className='icons'>
             <RiCloseCircleLine
-              key={goal.id}
-
-              onDelete={props.onDeleteItem}
+              onClick={props.onDeleteItem(goal.id)}
               className='delete-icon'
             />
             <TiEdit
