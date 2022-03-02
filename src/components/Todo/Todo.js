@@ -17,28 +17,45 @@ const Todo = () => {
         });
     };
 
-
-
-    const updateGoalHandler = (goalId, newValue) => {
+    const editItemHandler = (goalId, newValue) => {
         if (!newValue.text || /^\s*$/.test(newValue.text)) {
             return;
         }
-
         setInput(prev => prev.map(item => (item.id === goalId ? newValue : item)));
     };
 
-      const deleteItemHandler  = id => {
-        const removedArr = [...input].filter(goal => goal.id !== id);
+    const deleteItemHandler = goalId => {
+        setInput(prevGoals => {
+            const removedArr = prevGoals.filter(goal => goal.id !== goalId);
+            return removedArr;
+        });
+    };
+    // const editItemHandler = editedText => {
+    //   setInput(prevGoals => {
+    //       const updatedGoals
+    //   })
+    // };
 
-        setInput(removedArr);
-      };
-  
-    const completeGoalHandler = goalId => {
+
+
+    const completeHandler = goalId => {
         setInput(prevGoals => {
             const updatedGoals = prevGoals.filter(goal => goal.id !== goalId);
             return updatedGoals;
         });
     };
+
+    // let content = (
+    //     <p style={{ textAlign: 'center' }}>No goals found. Maybe add one?</p>
+    //   );
+
+    //   if (input.length > 0) {
+    //     content = (
+    //       <TodoList items={input} onDeleteItem={deleteItemHandler} />
+    //     );
+    //   }
+
+
 
     return (
         <div>
@@ -48,9 +65,9 @@ const Todo = () => {
             <section id='goals'>
                 <TodoList
                     items={input}
-                    onCompleteGoal={completeGoalHandler}
+                    onCompleteGoal={completeHandler}
                     onDeleteItem={deleteItemHandler}
-                    onUpdateGoal={updateGoalHandler}
+                    onEditItem={editItemHandler}
                 />
             </section>
         </div>

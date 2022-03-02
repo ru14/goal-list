@@ -1,26 +1,12 @@
-import React, { useState } from 'react';
-import TodoForm from './TodoForm';
+import React from 'react';
+//import TodoForm from './TodoForm';
+import TodoItemDelete from './TodoItemDelete';
+import TodoItemEdit from './TodoItemEdit';
 import './TodoList.css';
-import { RiCloseCircleLine } from 'react-icons/ri';
-import { TiEdit } from 'react-icons/ti';
+
 
 const TodoList = (props) => {
-  const [edit, setEdit] = useState({
-    id: null,
-    value: ''
-  });
 
-  const submitUpdate = value => {
-    props.onUpdateGoal(edit.id, value);
-    setEdit({
-      id: null,
-      value: ''
-    });
-  };
-
-  if (edit.id) {
-    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
-  }
   return (
     <ul className='goal-list'>
       {props.items.map((goal, index) => (
@@ -34,13 +20,15 @@ const TodoList = (props) => {
             {goal.text}
           </div>
           <div className='icons'>
-            <RiCloseCircleLine
-              onClick={props.onDeleteItem(goal.id)}
-              className='delete-icon'
+            <TodoItemDelete
+              id={goal.id}
+              onDelete={props.onDeleteItem}
             />
-            <TiEdit
-              onClick={() => setEdit({ id: goal.id, value: goal.text })}
-              className='edit-icon' />
+            <TodoItemEdit
+              id={goal.id}
+              value={goal.text}
+              onEdit={props.onEditItem}
+            />
           </div>
         </div>
       ))}
