@@ -6,10 +6,9 @@ import './TodoList.css';
 
 
 const TodoList = (props) => {
-
   return (
     <ul className='goal-list'>
-      {props.items.map((goal, index) => (
+      {props.items.map((goal, index) =>( 
         <div className={goal.isComplete ? 'goal-row complete' : 'goal-row'}
           key={index}>
           <div

@@ -18,10 +18,14 @@ const Todo = () => {
     };
 
     const editItemHandler = (goalId, newValue) => {
-        if (!newValue.text || /^\s*$/.test(newValue.text)) {
-            return;
-        }
-        setInput(prev => prev.map(item => (item.id === goalId ? newValue : item)));
+        console.log("TODO: In edit handler " + goalId + " " + newValue);        
+        
+        // if (!newValue.text || /^\s*$/.test(newValue.text)) {
+        //     return;
+        // }
+
+        console.log("TODO: In edit handler " + goalId + " " + newValue);                
+        setInput(prev => prev.map(item => (item.id === goalId ? {text:newValue, id: item.id} : item)));
     };
 
     const deleteItemHandler = goalId => {
